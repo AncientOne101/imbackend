@@ -1,0 +1,15 @@
+Name: imbackend-api
+Host: 0.0.0.0
+Port: 8888
+
+Mysql:
+  DataSource: root:root@tcp(127.0.0.1:3306)/user?charset=utf8&parseTime=True&loc=Local
+
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Type: node
+
+Salt: '19980428'
+Auth:
+  AccessSecret: uOvKLmVfztaXGpNYd4Z0I1SiT7MweJhl
+  AccessExpire: 86400

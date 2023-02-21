@@ -1,0 +1,74 @@
+type (
+	RegisterRequest {
+		Name     string `json:"name"`
+		Email    string `json:"email"`
+		Password string `json:"password"`
+	}
+
+	RegisterResponse {
+		ID    int64  `json:"id"`
+		Name  string `json:"name"`
+		Email string `json:"email"`
+	}
+
+	LoginRequest {
+		Email    string `json:"email"`
+		Password string `json:"password"`
+	}
+
+	LoginResponse {
+		ID     int64  `json:"id"`
+		Name   string `json:"name"`
+		Email  string `json:"email"`
+		Token  string `json:"token"`
+		Expire int64  `json:"expire"`
+	}
+	UpdateRequest {
+		ID       int64  `json:"id"`
+		Name     string `json:"name"`
+		Email    string `json:"email"`
+		Token    string `json:"token"`
+		Password string `json:"password"`
+	}
+	UpdateResponse {
+		ID          int64  `json:"id"`
+		Name        string `json:"name"`
+		Email       string `json:"email"`
+		Create_time string `json:"create_time"`
+		Update_time string `json:"update_time"`
+	}
+	DeleteRequest {
+		ID        int64  `json:"id"`
+		Token     string `json:"token"`
+		Email     string `json:"email"`
+		IsDeleted int64  `json:"is_deleted"`
+	}
+	DeleteResponse {
+		ID          int64  `json:"id"`
+		Name        string `json:"name"`
+		Email       string `json:"email"`
+		Create_time string `json:"create_time"`
+		Update_time string `json:"update_time"`
+		IsDeleted   int64  `json:"is_deleted"`
+	}
+)
+
+service imbackend-api {
+	//注册用户
+	@handler RegisterHandler
+	post /register (RegisterRequest) returns (RegisterResponse);
+	
+	//用户登录
+	@handler LoginHandler
+	post /login (LoginRequest) returns (LoginResponse);
+	
+	//修改用户信息
+	@handler UpdateUserHandler
+	post /update (UpdateRequest) returns (UpdateResponse);
+	
+	//删除用户
+	@handler DeleteUserHandler
+	post /delete (DeleteRequest) returns (DeleteResponse);
+
+	//查询用户
+}
